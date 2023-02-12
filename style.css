@@ -11,7 +11,7 @@
     --font-regular: 1rem;
     --font-small: 0.5rem;
     --font-large: 2rem;
-    --font-xl: 4rem;
+    --font-xl: 3.5rem;
 
     --font-semibold: 600;
 }
@@ -93,10 +93,6 @@ body{
     font-size: var(--font-xl);
 }
 
-#current-forecast .desc{
-
-}
-
 #current-forecast .desc,
 #current-forecast .min-max-temp{
     font-size: var(--font-regular);
@@ -113,7 +109,14 @@ body{
     grid-auto-flow: column;
     grid-auto-columns:  minmax(100px, 1fr);
     overflow-x: auto;
+    gap: 1.5em;
 
+}
+
+#hourly-forecast .hourly-container .icon{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
 }
 
 
@@ -131,4 +134,9 @@ body{
 #humidity{
     grid-area: humidity;
     text-align: center;
+}
+
+
+.icon{
+    object-fit: cover;
 }

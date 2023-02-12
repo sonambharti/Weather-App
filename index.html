@@ -24,7 +24,7 @@
             <label for="pin" class="pin" id="pin-label">Pincode</label>
             <input type="number" name="pin" class="pin" id="pin-inp"><br><br>
 
-            <input type="Submit" id="submit" onclick="getCurrentWeatherData()">
+            <input type="Submit" id="submit" onclick="loadEntireData()">
 
         </div>
         
@@ -42,7 +42,7 @@
                 <section class="hourly-container">
                     <article>
                         <h2 class="time">Now</h2>
-                        <img src="" alt="" class="icon">
+                        <img class="icon" src=""/>
                         <p class="hourly-temp">temp</p>
                     </article>
 
@@ -91,7 +91,7 @@
 
             <article id="feels-like">
                 <h1>Feels Like</h1>
-                <p>Temp</p>
+                <p class="feels-like-temp">Temp</p>
             </article>
 
             <article id="humidity">
