@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="data.json"></script>
+    <script src="main.js"></script>
+    <title>Weather App</title>
+</head>
+<body>
+
+    <nav class="navbar">Welcome To Our Weather Forecasting ...</nav>
+
+    <main class="container">
+        
+        <div class="input-details">
+            <label for="country" class="country" id="country-label">Country</label>            
+                <select name="country" class="country" id="country-inp">
+                                        
+                </select>
+
+            <label for="pin" class="pin" id="pin-label">Pincode</label>
+            <input type="number" name="pin" class="pin" id="pin-inp"><br><br>
+
+            <input type="Submit" id="submit" onclick="getCurrentWeatherData()">
+
+        </div>
+        
+        <div class="cards">
+            <article id="current-forecast">
+                <h1>Current Forecast</h1>
+                <h2 class="curr-city">City</h2>
+                <p class="temp">Temperature</p>
+                <p class="desc">Description</p>
+                <p class="min-max-temp">High/Low</p>
+            </article>
+
+            <article id="hourly-forecast">
+                <h1>Hourly Forecast</h1>
+                <section class="hourly-container">
+                    <article>
+                        <h2 class="time">Now</h2>
+                        <img src="" alt="" class="icon">
+                        <p class="hourly-temp">temp</p>
+                    </article>
+
+                    <article>
+                        <h2 class="time">Now</h2>
+                        <img src="" alt="" class="icon">
+                        <p class="hourly-temp">temp</p>
+                    </article>
+
+                    <article>
+                        <h2 class="time">Now</h2>
+                        <img src="" alt="" class="icon">
+                        <p class="hourly-temp">temp</p>
+                    </article>
+
+
+                    <article>
+                        <h2 class="time">Now</h2>
+                        <img src="" alt="" class="icon">
+                        <p class="hourly-temp">temp</p>
+                    </article>
+
+                </section>
+            </article>
+            
+            <article id="five-day-forecast">
+                <h1>5 Day Forecast</h1>
+                <article>
+                    <h2>Today</h2>
+                    <img src="" alt="">
+                    <p>Low</p>
+                    <p>High</p>
+                </article>
+                <article>
+                    <h2>Yesterday</h2>
+                    <img src="" alt="">
+                    <p>Low</p>
+                    <p>High</p>
+                </article>
+                <article>
+                    <h2>Tomorrow</h2>
+                    <p>Low</p>
+                    <p>High</p>
+                </article>
+            </article>
+
+            <article id="feels-like">
+                <h1>Feels Like</h1>
+                <p>Temp</p>
+            </article>
+
+            <article id="humidity">
+                <h1>Humidity</h1>
+                <p>value</p>
+            </article>
+
+        </div>
+
+    </main>
+    
+</body>
+</html>
