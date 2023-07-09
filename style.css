@@ -166,3 +166,18 @@ body {
 .icon {
     object-fit: cover;
 }
+
+@media(width>=650px) {
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "current current" "hourly hourly" "fiveday fiveday" "feelslike humidity";
+        gap: var(--spacing-regular);
+    }
+    .input-details {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "country-label country-inp" "pin-label pin-inp" "submit submit";
+        gap: 1em;
+    }
+}
