@@ -174,20 +174,6 @@ const loadHumidity = ({ main: { humidity } }) => {
     container.querySelector(".humid-value").textContent = `${humidity} %`;
 }
 
-function debounce(func) {
-    let timer;
-    return (...args) => {
-        clearTimeout(timer); //clear existing timer
-        timer = setTimeout(() => {
-
-        }, timeout);
-    }
-}
-
-const onSearchChange = (event) => {
-    let { value } = event.target;
-    getCitiesUsingGeolocation(value);
-}
 
 document.addEventListener("DOMContentLoaded", async() => {
     getCountryISOcode();
