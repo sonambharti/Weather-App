@@ -27,8 +27,8 @@ p {
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: auto;
-    width: 400px;
+    margin: var() auto;
+    max-width: 400px;
 }
 
 .navbar {
@@ -167,17 +167,17 @@ body {
     object-fit: cover;
 }
 
-@media(width>=650px) {
+@media(width>=600px) {
     .cards {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "current current" "hourly hourly" "fiveday fiveday" "feelslike humidity";
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: "current current current current" "hourly hourly fiveday fiveday" "feelslike humidity fiveday fiveday";
         gap: var(--spacing-regular);
     }
     .input-details {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "country-label country-inp" "pin-label pin-inp" "submit submit";
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: "country-label country-inp country-inp country-inp" "pin-label pin-inp pin-inp pin-inp" "submit submit submit submit";
         gap: 1em;
     }
 }
