@@ -33,6 +33,7 @@ body {
 
 .navbar {
     position: relative;
+    /* align-self: center; */
 }
 
 .input-details {

@@ -65,19 +65,29 @@ const loadCurrentForecast = ({ name, main: { temp, temp_max, temp_min }, weather
 
 const createIconUrl = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`
 
-const loadHourlyForecast = (hourlyForecast) => {
+const loadHourlyForecast = ({ main: { temp: tempNow }, weather: [{ icon: iconNow }] }, hourlyForecast) => {
     // console.log(hourlyForecast);
+    const timeFormatter = Intl.DateTimeFormat("en", {
+        hour12: true,
+        hour: "numeric"
+    })
     let dateFor12Hours = hourlyForecast.slice(1, 13);
+    // let dateFor12Hours = hourlyForecast.slice(2, 12);
     const hourlyContainer = document.querySelector(".hourly-container");
-    let innerHTMLString = ``;
+    let innerHTMLString = `<article>
+    <h2 class="time">Now</h2>
+    <img class="icon" src="${createIconUrl(iconNow)}" alt="icon"/>
+    <p class="hourly-temp">${formatTemp(tempNow)+"°"}</p>
+</article>`;
 
     for (let { temp, icon, dt_txt }
         of dateFor12Hours) {
         innerHTMLString += `<article>
-        <h2 class="time">${dt_txt.split(" ")[1].slice(0, 5)}</h2>
+        <h2 class="time">${timeFormatter.format(new Date(dt_txt))}</h2>
         <img class="icon" src="${createIconUrl(icon)}" alt="icon"/>
         <p class="hourly-temp">${formatTemp(temp)+"°"}</p>
     </article>`
+            // <h2 class="time">${dt_txt.split(" ")[1].slice(0, 5)}</h2>
             // console.log(dt_txt.split(" ")[1])
 
     }
@@ -155,7 +165,7 @@ const loadEntireData = async() => {
     // console.log(currentWeather);
     await loadCurrentForecast(currentWeather);
     const hourlyForecast = await getHourlyForecast(currentWeather);
-    loadHourlyForecast(hourlyForecast);
+    loadHourlyForecast(currentWeather, hourlyForecast);
     loadFiveDayForecast(hourlyForecast);
     loadFeelsLike(currentWeather);
     loadHumidity(currentWeather);
