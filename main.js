@@ -16,6 +16,13 @@ const getCountryISOcode = async() => {
 
 }
 
+const IP_location_api_key = "6f3adf66cc330b4ff844cf92c29ce000";
+const getLocation = async() => {
+    const ip_location_response = await fetch(`http://api.ipstack.com/check?access_key=${IP_location_api_key}`)
+    const ip_data = await ip_location_response.json();
+    return ip_data;
+}
+
 
 const weather_API_KEY = "3f6b6e4d25a4a75d4fff9bce57a869c0";
 const Days_of_the_week = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
@@ -31,19 +38,36 @@ const getGEOcordinates = async() => {
     return data;
 }
 
-const getCurrentWeatherData = async() => {
-    let coord = await getGEOcordinates();
-    // console.log(coord);
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coord["lat"]}&lon=${coord["lon"]}&appid=${weather_API_KEY}&units=metric`);
+const getCurrentWeatherData = async (flag) => {
+    let coord, lat, lon;
+    if(flag === 1){
+        coord = await getGEOcordinates();
+        lat = coord["lat"];
+        lon = coord["lon"];
+    } else {
+        coord = await getLocation();
+        lat = coord["latitude"];
+        lon = coord["longitude"];
+    }
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weather_API_KEY}&units=metric`);
 
     const currentWeather = await response.json();
     return currentWeather;
 
 }
 
-const getHourlyForecast = async() => {
-    let coord = await getGEOcordinates();
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coord["lat"]}&lon=${coord["lon"]}&appid=${weather_API_KEY}&units=metric`);
+const getHourlyForecast = async(flag) => {
+    let coord, lat, lon;
+    if(flag === 1){
+        coord = await getGEOcordinates();
+        lat = coord["lat"];
+        lon = coord["lon"];
+    } else {
+        coord = await getLocation();
+        lat = coord["latitude"];
+        lon = coord["longitude"];
+    }
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weather_API_KEY}&units=metric`);
     const data = await response.json();
     return data.list.map(forecast => {
         const { main: { temp, temp_max, temp_min }, dt, dt_txt, weather: [{ description, icon }] } = forecast;
@@ -124,8 +148,6 @@ const loadFiveDayForecast = (hourlyForecast) => {
     let dayWiseInfo = "";
 
     Array.from(dayWiseForecast).map(([day, { minTemp, maxTemp, icon }], index) => {
-        console.log(minTemp)
-
         if (index < 5) {
             dayWiseInfo += `<article class="day-wise-forecast">
                 <h2>${index === 0 ? "today" : day}</h2>
@@ -152,15 +174,6 @@ const loadHumidity = ({ main: { humidity } }) => {
     container.querySelector(".humid-value").textContent = `${humidity} %`;
 }
 
-function debounce(func) {
-    let timer;
-    return (...args) => {
-        clearTimeout(timer); //clear existing timer
-        timer = setTimeout(() => {
-
-        }, timeout);
-    }
-}
 
 const onSearchChange = (event) => {
     let { value } = event.target;
@@ -169,15 +182,16 @@ const onSearchChange = (event) => {
 
 document.addEventListener("DOMContentLoaded", async() => {
     getCountryISOcode();
-    // const hourlyForecast = await getHourlyForecast(currentWeather);
+    loadEntireData(0);
+    // const ip_data = await getLocation();
+    // console.log(ip_data);
 
 })
 
 
 
-const loadEntireData = async() => {
-    const currentWeather = await getCurrentWeatherData();
-    // console.log(currentWeather);
+const loadEntireData = async(flag) => {
+    const currentWeather = await getCurrentWeatherData(flag);
     await loadCurrentForecast(currentWeather);
     const hourlyForecast = await getHourlyForecast(currentWeather);
     loadHourlyForecast(currentWeather, hourlyForecast);
