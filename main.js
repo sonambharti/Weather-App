@@ -176,8 +176,9 @@ const loadHumidity = ({ main: { humidity } }) => {
 
 
 document.addEventListener("DOMContentLoaded", async() => {
-    getCountryISOcode();
     loadEntireData(0);
+    await getCountryISOcode();
+
     // const ip_data = await getLocation();
     // console.log(ip_data);
 
