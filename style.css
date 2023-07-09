@@ -28,7 +28,7 @@ p {
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: auto;
-    width: 400px;
+    max-width: 800px;
 }
 
 .navbar {
