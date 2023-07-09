@@ -17,6 +17,9 @@ const getCountryISOcode = async() => {
 }
 
 const IP_location_api_key = "6f3adf66cc330b4ff844cf92c29ce000";
+
+
+
 const getLocation = async() => {
     const ip_location_response = await fetch(`http://api.ipstack.com/check?access_key=${IP_location_api_key}`)
     const ip_data = await ip_location_response.json();
@@ -38,17 +41,8 @@ const getGEOcordinates = async() => {
     return data;
 }
 
-const getCurrentWeatherData = async(flag) => {
-    let coord, lat, lon;
-    if (flag === 1) {
-        coord = await getGEOcordinates();
-        lat = coord["lat"];
-        lon = coord["lon"];
-    } else {
-        coord = await getLocation();
-        lat = coord["latitude"];
-        lon = coord["longitude"];
-    }
+const getCurrentWeatherData = async(lat, lon) => {
+
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weather_API_KEY}&units=metric`);
 
     const currentWeather = await response.json();
@@ -56,17 +50,8 @@ const getCurrentWeatherData = async(flag) => {
 
 }
 
-const getHourlyForecast = async(flag) => {
-    let coord, lat, lon;
-    if (flag === 1) {
-        coord = await getGEOcordinates();
-        lat = coord["lat"];
-        lon = coord["lon"];
-    } else {
-        coord = await getLocation();
-        lat = coord["latitude"];
-        lon = coord["longitude"];
-    }
+const getHourlyForecast = async(lat, lon) => {
+
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weather_API_KEY}&units=metric`);
     const data = await response.json();
     return data.list.map(forecast => {
@@ -174,22 +159,46 @@ const loadHumidity = ({ main: { humidity } }) => {
     container.querySelector(".humid-value").textContent = `${humidity} %`;
 }
 
+const getLocationGps = () => {
+    navigator.geolocation.getCurrentPosition(({ coords }) => {
+        const { latitude: lat, longitude: lon } = coords;
+        loadEntireData(lat, lon);
+    }, error => console.log(error))
+}
 
 document.addEventListener("DOMContentLoaded", async() => {
-    loadEntireData(0);
-    await getCountryISOcode();
-
+    getCountryISOcode();
+    getLocationGps();
+    if (!navigator.geolocation) {
+        loadCoords(2);
+    }
     // const ip_data = await getLocation();
     // console.log(ip_data);
 
 })
 
+const loadCoords = async(flag) => {
+
+    let coord, lat, lon;
+    if (flag === 1) {
+        coord = await getGEOcordinates();
+        lat = coord["lat"];
+        lon = coord["lon"];
+    } else if (flag === 2) {
+        coord = await getLocation();
+        lat = coord["latitude"];
+        lon = coord["longitude"];
+    }
+
+    loadEntireData(lat, lon);
+}
 
 
-const loadEntireData = async(flag) => {
-    const currentWeather = await getCurrentWeatherData(flag);
+const loadEntireData = async(lat, lon) => {
+
+    const currentWeather = await getCurrentWeatherData(lat, lon);
     await loadCurrentForecast(currentWeather);
-    const hourlyForecast = await getHourlyForecast(currentWeather);
+    const hourlyForecast = await getHourlyForecast(lat, lon);
     loadHourlyForecast(currentWeather, hourlyForecast);
     loadFiveDayForecast(hourlyForecast);
     loadFeelsLike(currentWeather);
