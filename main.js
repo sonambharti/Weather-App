@@ -25,7 +25,7 @@ const getLocation = async() => {
 
 
 const weather_API_KEY = "3f6b6e4d25a4a75d4fff9bce57a869c0";
-const Days_of_the_week = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+const Days_of_the_week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 
 const getGEOcordinates = async() => {
@@ -150,7 +150,7 @@ const loadFiveDayForecast = (hourlyForecast) => {
     Array.from(dayWiseForecast).map(([day, { minTemp, maxTemp, icon }], index) => {
         if (index < 5) {
             dayWiseInfo += `<article class="day-wise-forecast">
-                <h2>${index === 0 ? "today" : day}</h2>
+                <h2>${index === 0 ? "Today" : day}</h2>
                 <img class="icon" src="${createIconUrl(icon)}" alt="icon for the forecast" />
                 <p class="min-temp">${minTemp}</p>
                 <p class="max-temp">${maxTemp}</p>
