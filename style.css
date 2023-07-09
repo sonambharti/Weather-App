@@ -43,6 +43,14 @@ body {
     gap: 1em;
 }
 
+.input-details,
+.input-details>article {
+    border: 1px solid;
+    border-radius: var(--spacing-regular);
+    padding: var(--spacing-regular);
+    margin-bottom: 0.5em;
+}
+
 #country-label {
     grid-area: country-label;
 }
@@ -63,6 +71,7 @@ body {
     grid-area: submit;
     width: fit-content;
     margin: 0 auto;
+    margin-bottom: -1em;
 }
 
 .cards {

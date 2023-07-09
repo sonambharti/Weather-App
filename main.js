@@ -153,11 +153,13 @@ const loadHumidity = ({ main: { humidity } }) => {
 }
 
 
+
 document.addEventListener("DOMContentLoaded", async() => {
     getCountryISOcode();
     // const hourlyForecast = await getHourlyForecast(currentWeather);
 
 })
+
 
 
 const loadEntireData = async() => {
