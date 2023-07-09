@@ -16,12 +16,11 @@ const getCountryISOcode = async() => {
 
 }
 
-const IP_location_api_key = "6f3adf66cc330b4ff844cf92c29ce000";
-
+const IP_location_api_key = "5de49f4f-d3fc-4314-afba-bc49584fb7a8";
 
 
 const getLocation = async() => {
-    const ip_location_response = await fetch(`http://api.ipstack.com/check?access_key=${IP_location_api_key}`)
+    const ip_location_response = await fetch(`https://apiip.net/api/check?accessKey=${IP_location_api_key}`)
     const ip_data = await ip_location_response.json();
     return ip_data;
 }

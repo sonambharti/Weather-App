@@ -12,7 +12,7 @@
     --font-regular: 1rem;
     --font-small: 0.5rem;
     --font-large: 2rem;
-    --font-xl: 3.5rem;
+    --font-xl: 3rem;
     --font-semibold: 600;
 }
 
@@ -27,13 +27,18 @@ p {
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: var() auto;
-    max-width: 400px;
+    margin: auto;
+    max-width: 800px;
+    min-width: 400px;
 }
 
 .navbar {
     position: relative;
     /* align-self: center; */
+    background-color: burlywood;
+    animation-duration: 2s;
+    animation-iteration-count: 3;
+    animation-timing-function: linear;
 }
 
 .input-details {
@@ -41,6 +46,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "country-label country-inp" "pin-label pin-inp" "submit submit";
     gap: 1em;
+    height: 8em;
 }
 
 .input-details,
@@ -48,7 +54,7 @@ body {
     border: 1px solid;
     border-radius: var(--spacing-regular);
     padding: var(--spacing-regular);
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
 }
 
 #country-label {
@@ -167,11 +173,11 @@ body {
     object-fit: cover;
 }
 
-@media(width>=600px) {
+@media(width>=700px) {
     .cards {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: "current current current current" "hourly hourly fiveday fiveday" "feelslike humidity fiveday fiveday";
+        grid-template-areas: "current current current current" "hourly hourly hourly hourly" " fiveday fiveday fiveday fiveday" "feelslike feelslike humidity humidity";
         gap: var(--spacing-regular);
     }
     .input-details {
