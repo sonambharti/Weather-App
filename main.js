@@ -179,10 +179,12 @@ document.addEventListener("DOMContentLoaded", async() => {
 
 
     getCountryISOcode();
-    getLocationGps();
-    if (!navigator.geolocation) {
-        loadCoords(2);
-    }
+    loadCoords(2);
+
+    // getLocationGps();
+    // if (!navigator.geolocation) {
+    //     loadCoords(2);
+    // }
     // const ip_data = await getLocation();
     // console.log(ip_data);
 

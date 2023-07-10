@@ -34,7 +34,7 @@ body {
 .container-main {
     margin: 0 auto;
     max-width: 800px;
-    min-width: 400px;
+    /* min-width: 400px; */
 }
 
 .navbar {
@@ -45,8 +45,8 @@ body {
     /* font-family: "Montserrat", sans-serif; */
     font-family: 'Abril Fatface', cursive;
     font-weight: 900;
-    font-size: x-large;
-    font-optical-sizing: auto;
+    font-size: large;
+    /* font-optical-sizing: auto; */
 }
 
 .marquee {
@@ -71,6 +71,7 @@ body {
     float: left;
     width: 50%;
     background: -webkit-linear-gradient(rgb(237, 237, 30), rgb(212, 4, 4));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -86,8 +87,8 @@ body {
 
 .input-details {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "country-label country-inp" "pin-label pin-inp" "submit submit";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "country-label country-inp country-inp country-inp" "pin-label pin-inp pin-inp pin-inp" "submit submit submit submit";
     gap: 1em;
     height: 10em;
 }
@@ -169,20 +170,9 @@ input.hover-center-1:active {
     background-color: aqua;
 }
 
-
-/* #submit:hover {
-    color: red;
-}
-
-#submit:active {
-    color: yellow;
-    background-color: green;
-    border: 1rem;
-} */
-
 #country-label,
-#country-inp,
 #pin-label,
+#country-inp,
 #pin-inp {
     font-family: serif;
     font-size: large;
@@ -295,5 +285,9 @@ input.hover-center-1:active {
         grid-template-columns: repeat(4, 1fr);
         grid-template-areas: "country-label country-inp country-inp country-inp" "pin-label pin-inp pin-inp pin-inp" "submit submit submit submit";
         gap: 1em;
+    }
+    .navbar {
+        font-weight: 900;
+        font-size: x-large;
     }
 }
