@@ -41,17 +41,19 @@ body {
     margin: 0 auto;
     position: relative;
     align-self: center;
-    background-color: burlywood;
-    font-family: serif;
-    font-weight: 800;
-    font-size: xx-large;
+    background-color: #22955A;
+    /* font-family: "Montserrat", sans-serif; */
+    font-family: 'Abril Fatface', cursive;
+    font-weight: 900;
+    font-size: x-large;
+    font-optical-sizing: auto;
 }
 
 .marquee {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 60px;
     overflow: hidden;
     position: relative;
 }
@@ -59,15 +61,18 @@ body {
 .marquee div {
     display: block;
     width: 200%;
-    height: 30px;
+    /* height: 40px; */
     position: absolute;
     overflow: hidden;
-    animation: marquee 10s linear infinite;
+    animation: marquee 20s linear infinite;
 }
 
 .marquee span {
     float: left;
     width: 50%;
+    background: -webkit-linear-gradient(rgb(237, 237, 30), rgb(212, 4, 4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @keyframes marquee {
@@ -84,7 +89,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "country-label country-inp" "pin-label pin-inp" "submit submit";
     gap: 1em;
-    height: 8em;
+    height: 10em;
 }
 
 .input-details,
@@ -101,6 +106,8 @@ body {
 
 #country-inp {
     grid-area: country-inp;
+    border-radius: 1rem;
+    border-color: black;
 }
 
 #pin-label {
@@ -109,6 +116,8 @@ body {
 
 #pin-inp {
     grid-area: pin-inp;
+    border-radius: 1rem;
+    border-color: black;
 }
 
 #submit {
@@ -116,6 +125,69 @@ body {
     width: fit-content;
     margin: 0 auto;
     margin-bottom: -1em;
+    font: serif;
+}
+
+input[type="submit"] {
+    background-color: transparent;
+    color: darkgreen;
+    padding: 10px 60px;
+    font-size: 18px;
+    font-weight: 500;
+    background: #57e78e;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    text-transform: capitalize;
+    border: 3px solid darkgreen;
+    border-radius: 1.5rem;
+}
+
+input[type="submit"]:focus {
+    outline: none;
+}
+
+input.hover-center-1 {
+    background-image: linear-gradient(0, #0A3D5B, #0A3D5B);
+    background-size: 0;
+    transition: .8s;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+input.hover-center-1:hover {
+    background-size: 100%;
+    color: #fff;
+    padding: 12px 62px;
+}
+
+input.hover-center-1:active {
+    color: rgb(241, 166, 4);
+    background-color: aqua;
+}
+
+
+/* #submit:hover {
+    color: red;
+}
+
+#submit:active {
+    color: yellow;
+    background-color: green;
+    border: 1rem;
+} */
+
+#country-label,
+#country-inp,
+#pin-label,
+#pin-inp {
+    font-family: serif;
+    font-size: large;
+    font-weight: 500;
+    font-stretch: extra-expanded;
 }
 
 .cards {
