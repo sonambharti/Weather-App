@@ -27,19 +27,52 @@ p {
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: auto;
+    margin: 0 0;
+}
+
+.container-main {
+    margin: 0 auto;
     max-width: 800px;
     min-width: 400px;
 }
 
 .navbar {
+    margin: 0 auto;
     position: relative;
-    /* align-self: center; */
+    align-self: center;
     background-color: burlywood;
-    animation-duration: 2s;
-    animation-iteration-count: 3;
-    animation-timing-function: linear;
+    font-weight: 800;
+    font-size: large;
 }
+.marquee {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .marquee div {
+    display: block;
+    width: 200%;
+    height: 30px;
+  
+    position: absolute;
+    overflow: hidden;
+  
+    animation: marquee 10s linear infinite;
+  }
+  
+  .marquee span {
+    float: left;
+    width: 50%;
+  }
+  
+  @keyframes marquee {
+    0% { left: 0; }
+    100% { left: -100%; }
+  }
 
 .input-details {
     display: grid;
