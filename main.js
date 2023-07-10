@@ -200,36 +200,36 @@ const changeImage = () => {
     const snow = ["snow", "light snow", "heavy snow", "sleet", "light shower sleet", "shower sleet", "light rain and snow", "rain and snow", "shower snow", "heavy shower snow"];
     const thunderstorm = ["thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain", "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm", "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle"];
     const shower_rain = ["light intensity drizzle", "drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain", "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle", "shower rain"];
-    const rain = ["light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain", "freezing rain", "light intensity shower rain",  "heavy intensity shower rain", "ragged shower rain"];
+    const rain = ["light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain", "freezing rain", "light intensity shower rain", "heavy intensity shower rain", "ragged shower rain"];
     const mist = ["mist", "smoke", "haze", "sand/dust whirls", "fog"];
     const tornado = ["sand", "dust", "volcanic ash", "squalls", "tornado"];
 
     const articleDesc = document.getElementsByClassName('desc')[0].innerText;
     console.log(articleDesc);
     const articleBack = document.getElementById('current-forecast');
-    if(articleDesc in fewclouds){
+    if (fewclouds.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/fewclouds.gif')";
-    } else if(scatteredclouds.includes(articleDesc)){
+    } else if (scatteredclouds.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/scatteredclouds.gif')";
-    } else if(denseclouds.includes(articleDesc)){
+    } else if (denseclouds.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/densecloud.gif')";
-    } else if(snow.includes(articleDesc)){
+    } else if (snow.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/snow.gif')";
-    } else if(thunderstorm.includes(articleDesc)){
+    } else if (thunderstorm.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/thunderstorm.gif')";
-    } else if(shower_rain.includes(articleDesc)){
+    } else if (shower_rain.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/showerrain.gif')";
-    } else if(rain.includes(articleDesc)){
+    } else if (rain.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/rain.gif')";
-    } else if(mist.includes(articleDesc)){
+    } else if (mist.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/mist.gif')";
-    } else if(tornado.includes(articleDesc)){
+    } else if (tornado.includes(articleDesc)) {
         articleBack.style.backgroundImage = "url('weather-images/sand_storm.gif')";
     } else {
         articleBack.style.backgroundImage = "url('weather-images/clearsky.gif')";
     }
-    
-    
+
+
     articleBack.style.backgroundSize = "cover";
     articleBack.style.backgroundRepeat = "no-repeat";
     articleBack.style.backgroundPosition = "center";

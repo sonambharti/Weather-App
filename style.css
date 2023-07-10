@@ -44,35 +44,38 @@ body {
     font-weight: 800;
     font-size: large;
 }
+
 .marquee {
     display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     overflow: hidden;
     position: relative;
-  }
-  
-  .marquee div {
+}
+
+.marquee div {
     display: block;
     width: 200%;
     height: 30px;
-  
     position: absolute;
     overflow: hidden;
-  
     animation: marquee 10s linear infinite;
-  }
-  
-  .marquee span {
+}
+
+.marquee span {
     float: left;
     width: 50%;
-  }
-  
-  @keyframes marquee {
-    0% { left: 0; }
-    100% { left: -100%; }
-  }
+}
+
+@keyframes marquee {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -100%;
+    }
+}
 
 .input-details {
     display: grid;
@@ -189,7 +192,7 @@ body {
 }
 
 .five-day-forecast-container .day-wise-forecast .min-temp {
-    opacity: 50%;
+    opacity: 80%;
 }
 
 #feels-like {
