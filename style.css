@@ -26,6 +26,7 @@ p {
 }
 
 body {
+    background-size: auto;
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0 0;
 }
