@@ -66,7 +66,7 @@ const formatTemp = (temp) => `${temp?.toFixed(1)}`;
 const loadCurrentForecast = ({ name, main: { temp, temp_max, temp_min }, weather: [{ description }] }) => {
     const currentForecastElement = document.querySelector("#current-forecast");
     currentForecastElement.querySelector(".curr-city").textContent = name;
-    currentForecastElement.querySelector(".temp").textContent = temp + "°";
+    currentForecastElement.querySelector(".temp").textContent = temp + "°C";
     currentForecastElement.querySelector(".desc").textContent = description;
     currentForecastElement.querySelector(".min-max-temp").textContent = `H: ${formatTemp(temp_max)}° L:${formatTemp(temp_min)}°`;
     return currentForecastElement;
