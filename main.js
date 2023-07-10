@@ -167,6 +167,17 @@ const getLocationGps = () => {
 }
 
 document.addEventListener("DOMContentLoaded", async() => {
+
+    var currentTime = new Date().getHours();
+    if (7 <= currentTime && currentTime < 20 ) {
+        document.body.style.backgroundImage = "url('weather-images/clearsky.gif')";
+        document.querySelector(".container").style.background = "#6ca1bdde";
+    } else {
+        document.body.style.backgroundImage = "url('weather-images/clearnight.gif')";
+        document.querySelector(".container").style.background = "#8b8b8bde";
+    }
+    
+
     getCountryISOcode();
     getLocationGps();
     if (!navigator.geolocation) {
@@ -205,7 +216,6 @@ const changeImage = () => {
     const tornado = ["sand", "dust", "volcanic ash", "squalls", "tornado"];
 
     const articleDesc = document.getElementsByClassName('desc')[0].innerText;
-    console.log(articleDesc);
     const articleBack = document.getElementById('current-forecast');
     if(articleDesc in fewclouds){
         articleBack.style.backgroundImage = "url('weather-images/fewclouds.gif')";

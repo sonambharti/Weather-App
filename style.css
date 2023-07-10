@@ -26,6 +26,7 @@ p {
 }
 
 body {
+    background-size: auto;
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0 0;
 }
@@ -189,7 +190,7 @@ body {
 }
 
 .five-day-forecast-container .day-wise-forecast .min-temp {
-    opacity: 50%;
+    opacity: 80%;
 }
 
 #feels-like {
