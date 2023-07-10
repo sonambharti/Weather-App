@@ -42,8 +42,9 @@ body {
     position: relative;
     align-self: center;
     background-color: burlywood;
+    font-family: serif;
     font-weight: 800;
-    font-size: large;
+    font-size: xx-large;
 }
 
 .marquee {
