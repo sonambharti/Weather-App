@@ -169,14 +169,14 @@ const getLocationGps = () => {
 document.addEventListener("DOMContentLoaded", async() => {
 
     var currentTime = new Date().getHours();
-    if (7 <= currentTime && currentTime < 20 ) {
+    if (7 <= currentTime && currentTime < 20) {
         document.body.style.backgroundImage = "url('weather-images/clearsky.gif')";
         document.querySelector(".container").style.background = "#6ca1bdde";
     } else {
         document.body.style.backgroundImage = "url('weather-images/clearnight.gif')";
         document.querySelector(".container").style.background = "#8b8b8bde";
     }
-    
+
 
     getCountryISOcode();
     getLocationGps();
