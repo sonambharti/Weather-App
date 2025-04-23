@@ -22,8 +22,9 @@ const getLocation = async() => {
     return ip_data;
 }
 
-
-const weather_API_KEY = "3f6b6e4d25a4a75d4fff9bce57a869c0";
+// const weather_API_KEY = "3f6b6e4d25a4a75d4fff9bce57a869c0";
+const weather_API_KEY = CONFIG.WEATHER_API_KEY;
+console.log(weather_API_KEY);
 const Days_of_the_week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 
@@ -167,9 +168,11 @@ document.addEventListener("DOMContentLoaded", async() => {
     var currentTime = new Date().getHours();
     if (7 <= currentTime && currentTime < 20) {
         document.body.style.backgroundImage = "url('weather-images/clearsky.gif')";
+        // document.body.style.backgroundSize = "cover";
         document.querySelector(".container").style.background = "#6ca1bdde";
     } else {
         document.body.style.backgroundImage = "url('weather-images/clearnight.gif')";
+        // document.body.style.backgroundSize = "cover";
         document.querySelector(".container").style.background = "#8b8b8bde";
     }
 
