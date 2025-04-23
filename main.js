@@ -1,6 +1,5 @@
 // import jsonData from './data.json' assert { type: 'JSON' };
 
-
 const getCountryISOcode = async() => {
     var select = document.getElementById('country-inp');
     var html = "<option value='' disabled selected>Select your option</option>";
@@ -12,18 +11,16 @@ const getCountryISOcode = async() => {
             }
             select.innerHTML = html;
         });
-
-
 }
 
 const getLocation = async() => {
-    const ip_location_response = await fetch(`http://ip-api.com/json`)
+    const ip_location_response = await fetch(`http://ip-api.com/json`);
     const ip_data = await ip_location_response.json();
     return ip_data;
 }
 
-// const weather_API_KEY = "3f6b6e4d25a4a75d4fff9bce57a869c0";
 const weather_API_KEY = CONFIG.WEATHER_API_KEY;
+// const weather_API_KEY = process.env.WEATHER_API_KEY;
 console.log(weather_API_KEY);
 const Days_of_the_week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
